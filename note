@@ -28,3 +28,46 @@ try dnn and lstm
 
 classify all latency into 5 bins: 0-50ms, 50-100ms, 100-150ms, 150-200ms
 
+10/24
+compare with linear regression, without probe, and no xack only normal ack (not implemented yet), a recursive least squares
+
+10/25 
+nmodification to data collection: remove xack line; add size to latency.dat
+
+need to make the accuracy of each class similar or priotize over a class
+weighted cross entropy?
+
+intuitively, when the latency is higher, the consequence of not detecting it should be higher
+
+need to reduce class numbers so that each class will contain some samples
+
+10/26
+
+need to model the gain/loss of a successful prediction at a certain level.
+
+how to determine the threshold of a jitter? lets assume we know latency of all packets (or we can detect them with high accuracy). Now we need to draw a threshold line to separate all packets into jitter/non-jitter. 
+
+evaluation:
+transmit 1000-10000 packets
+set a threshold T
+measure the number of packets that is predicted to arrive in time and is in fact in time N_{arrival}
+measure the number of total sent packets
+measure the metric of 1/threshold*sending effectiveness*sent size for different methods
+
+for baseline that dont do any prediction, we can find the optimal threshold after getting the latency. However, the limitation is that the transmitted number always equals the total packet number while proposed method can reduce the transmitted number.
+
+try different loss functions to improve results
+
+the objective function can be different to get a different threshold
+
+so now it becomes a two-class classification problem.
+
+10/27
+implement baseline methods
+
+cross entropy or weighted cross entropy or else?
+
+
+
+
+
